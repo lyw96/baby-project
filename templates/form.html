@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>신생아 정보 입력</title>
+</head>
+<body>
+    <h2>신생아 정보 입력</h2>
+    <form action="/submit" method="post">
+        이름: <input type="text" name="name" required><br><br>
+        생년월일: <input type="date" name="birth_date" required><br><br>
+        태어난 시간: <input type="time" name="birth_time"><br><br>
+        혈액형: <input type="text" name="blood_type"><br><br>
+        몸무게(kg): <input type="number" step="0.01" name="weight"><br><br>
+        부모 이름: <input type="text" name="parent_name"><br><br>
+        <input type="submit" value="저장하기">
+    </form>
+</body>
+</html>
+<p><a href="/babies">📄 저장된 아기 목록 보기</a></p>

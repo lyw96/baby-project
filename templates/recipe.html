@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이유식 레시피</title>
+    <style>
+        .recipe-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            width: 300px;
+        }
+        .recipe-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h2>{{ months }}개월 아기를 위한 이유식 레시피</h2>
+
+    {% for recipe in recipes %}
+    <div class="recipe-card">
+        <h3>{{ recipe.title }}</h3>
+        <img src="{{ url_for('static', filename='images/' + recipe.image) }}" alt="{{ recipe.title }}">
+        <p><strong>설명:</strong> {{ recipe.description }}</p>
+
+        {% if recipe.video %}
+            <p><strong>조리 영상:</strong></p>
+            <iframe width="300" height="200" src="{{ recipe.video }}" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+
+        <p><strong>주의사항:</strong> ⚠️ {{ recipe.caution }}</p>
+    </div>
+    {% endfor %}
+
+    <br>
+    <a href="/">← 돌아가기</a>
+</body>
+</html>

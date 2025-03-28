@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>신생아 생애 주기 정보</title>
+</head>
+<body>
+    <h2>{{ name }}의 생애 주기 정보</h2>
+    <ul>
+        {% for key, value in milestones.items() %}
+            <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">← 다시 입력하기</a>
+</body>
+</html>
+<p><a href="/recipe/{{ milestones['D+100'].strftime('%Y-%m-%d') }}">🍚 이유식 레시피 보러가기</a></p>
+<h3>🍽️ {{ months }}개월 아기의 먹을 수 있는 음식</h3>
+<p>{{ feeding_guide }}</p>
+<p><a href="/map">🗺️ 내 주변 소아과 보기</a></p>
+<h3>💉 예방접종 스케줄</h3>
+<table border="1" cellpadding="8">
+    <tr>
+        <th>접종 이름</th>
+        <th>예정일</th>
+        <th>알림</th>
+    </tr>
+    {% for vaccine in vaccines %}
+    <tr>
+        <td>{{ vaccine.name }}</td>
+        <td>{{ vaccine.due_date }}</td>
+        <td>{{ vaccine.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
